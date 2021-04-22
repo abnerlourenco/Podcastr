@@ -1,4 +1,5 @@
 import { GetStaticProps } from 'next';
+import { api } from '../services/api';
 
 type Episode = {
   id: string;
@@ -23,12 +24,18 @@ export default function Home(props: HomeProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  //parametros atribuidos na API 
-  //limite de 12 episodios carregados (_limit=12)
-  //ordenado pela data de publicação (_sort=published_at)
-  //apresentados em ordem decrescente (_order=desc)
-  const response = await fetch('http://localhost:3333/episodes?_limit=12&_sort=published_at&_order=desc')
-  const data = await response.json()
+
+  const { data } = await api('episodes', {
+    params: {
+      //parametros atribuidos na API 
+      //limite de 12 episodios carregados (_limit=12)
+      //ordenado pela data de publicação (_sort=published_at)
+      //apresentados em ordem decrescente (_order=desc)
+      _limit: 12,
+      _sort: 'published_at',
+      _order: 'desc'
+    }
+  })
 
   return {
     props: {
