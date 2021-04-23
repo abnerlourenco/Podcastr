@@ -112,3 +112,21 @@
         }
     }
 }
+
+@media (max-width: 1680px) {
+    .latestEpisodes {
+        ul {
+            grid-template-columns: none;
+
+            width: 75%;
+        }
+    }
+}
+
+@media (max-width: 1350px) {
+    .latestEpisodes {
+        ul {
+            width: auto;
+        }
+    }
+}
