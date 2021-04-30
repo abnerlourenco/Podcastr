@@ -15,7 +15,7 @@ export function Player() {
         episodeList, 
         currentEpisodeIndex, 
         isPlaying,
-        tooglePlay,
+        togglePlay,
         setPlayingState
     } = useContext(PlayerContext)
 
@@ -34,7 +34,7 @@ export function Player() {
     const episode = episodeList[currentEpisodeIndex]
 
     return (
-       <div className={styles.playerConteiner}>
+       <div className={styles.playerContainer}>
            <header>
                <img src="/playing.svg" alt="Tocando agora"/>
                <strong>Tocando agora</strong>
@@ -100,7 +100,7 @@ export function Player() {
                         type="button" 
                         className={styles.playButton} 
                         disabled={!episode} 
-                        onClick={tooglePlay}>
+                        onClick={togglePlay}>
 
                         { isPlaying 
                             ? <img src="/pause.svg" alt="Tocar"/>
