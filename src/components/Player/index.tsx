@@ -1,5 +1,3 @@
-import format from "date-fns/format";
-import ptBR from "date-fns/locale/pt-BR";
 import Image from "next/image";
 import { useContext, useEffect, useRef } from "react";
 import Slider from 'rc-slider'
