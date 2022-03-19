@@ -20,6 +20,7 @@ type PlayerContextData = {
     playPrevious: () => void;
     setPlayingState: (state: boolean) => void;
     togglePlay: () => void;
+    stopPlay: () => void;
 };
 
 export const PlayerContext = createContext({} as PlayerContextData);
@@ -49,6 +50,10 @@ export function PlayerContextProvider ({ children }: PlayerContextProviderProps)
         setIsPlaying(!isPlaying);
     }
 
+    function stopPlay() {
+        setIsPlaying(false);
+    }
+
     function setPlayingState(state: boolean) {
         setIsPlaying(state);
     }
@@ -76,6 +81,7 @@ export function PlayerContextProvider ({ children }: PlayerContextProviderProps)
                 playList,
                 isPlaying, 
                 togglePlay, 
+                stopPlay,
                 setPlayingState,
                 playNext,
                 playPrevious

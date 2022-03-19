@@ -16,6 +16,7 @@ export function Player() {
         currentEpisodeIndex, 
         isPlaying,
         togglePlay,
+        stopPlay,
         playNext,
         playPrevious,
         setPlayingState
@@ -48,7 +49,7 @@ export function Player() {
                         width={592}
                         height={592}
                         src={episode.thumbnail}
-                        objectFit="cover"
+                        objectFit="contain"
                     />
 
                     <strong>{episode.title}</strong>
@@ -112,6 +113,15 @@ export function Player() {
                             ? <img src="/pause.svg" alt="Tocar"/>
                             : <img src="/play.svg" alt="Pausar"/>
                         }
+                    </button>
+
+                    <button 
+                        type="button" 
+                        disabled={!episode} 
+                        onClick={stopPlay}
+                    >
+                        <img src="/stop-play.svg" alt="Parar"/>
+
                     </button>
 
                     <button 
