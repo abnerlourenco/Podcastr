@@ -3,11 +3,10 @@ import { format, parseISO } from 'date-fns';
 import Image from 'next/image';
 import { ptBR } from 'date-fns/locale';
 import Link from 'next/link';
-import { useContext } from 'react';
 
 import { api } from '../../services/api';
 import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString';
-import { PlayerContext } from '../../contexts/playerContext';
+import { usePlayer } from '../../contexts/playerContext';
 
 import styles from './episode.module.scss';
 
@@ -30,7 +29,7 @@ type EpisodeProps = {
 }
 
 export default function Episode({ episode }: EpisodeProps) {
-    const { play } = useContext(PlayerContext)
+    const { play } = usePlayer()
 
     return (
         <div className={styles.episode}>

@@ -1,12 +1,13 @@
 import Image from "next/image";
-import { useContext, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import Slider from 'rc-slider'
 
 import 'rc-slider/assets/index.css';
 
-import { PlayerContext } from "../../contexts/playerContext";
+import { usePlayer } from "../../contexts/playerContext";
 
 import styles from "./styles.module.scss";
+import { convertDurationToTimeString } from "../../utils/convertDurationToTimeString";
 
 export function Player() {
     const audioRef = useRef<HTMLAudioElement>(null);
@@ -16,11 +17,17 @@ export function Player() {
         currentEpisodeIndex, 
         isPlaying,
         togglePlay,
-        stopPlay,
+        toggleLoop,
+        toggleShuffle,
+        // stopPlay,
         playNext,
         playPrevious,
-        setPlayingState
-    } = useContext(PlayerContext)
+        setPlayingState,
+        hasNext,
+        hasPrevious,
+        isLooping,
+        isShuffling
+    } = usePlayer()
 
     useEffect(() => {
         if (!audioRef.current) {
@@ -76,7 +83,7 @@ export function Player() {
                             <div className={styles.emptySlider}></div>
                         )}
                     </div>
-                    <span>00:00</span>
+                    <span>{convertDurationToTimeString(episode?.duration ?? 0)}</span>
                 </div>
 
                 { episode && (
@@ -84,6 +91,7 @@ export function Player() {
                         src={episode.url} 
                         ref={audioRef}
                         autoPlay
+                        loop={isLooping}
                         onPlay={() => setPlayingState(true)}
                         onPause={() => setPlayingState(false)}
                     />
@@ -91,13 +99,18 @@ export function Player() {
 
                 <div className={styles.buttons}>
 
-                    <button type="button" disabled={!episode}>
+                    <button 
+                        type="button" 
+                        disabled={!episode || episodeList.length == 1}
+                        onClick={toggleShuffle}
+                        className={isShuffling ? styles.isActive : ''}
+                    >
                         <img src="/shuffle.svg" alt="Embaralhar"/>
                     </button>
 
                     <button 
                         type="button" 
-                        disabled={!episode}
+                        disabled={!episode || !hasPrevious}
                         onClick={playPrevious}
                     >
                         <img src="/play-previous.svg" alt="Tocar anterior"/>
@@ -115,24 +128,30 @@ export function Player() {
                         }
                     </button>
 
-                    <button 
+                    {/* <button 
                         type="button" 
                         disabled={!episode} 
                         onClick={stopPlay}
                     >
                         <img src="/stop-play.svg" alt="Parar"/>
 
-                    </button>
+                    </button> */}
 
                     <button 
                         type="button" 
-                        disabled={!episode}
+                        disabled={!episode || !hasNext}
                         onClick={playNext}
                     >
                         <img src="/play-next.svg" alt="Tocar próxima"/>
                     </button>
 
-                    <button type="button" disabled={!episode}>
+                    <button 
+                        type="button" 
+                        disabled={!episode}
+                        onClick={toggleLoop}
+                        className={isLooping ? styles.isActive : ''}
+                    >
+                        
                         <img src="/repeat.svg" alt="Repetir"/>
                     </button>
                 </div>

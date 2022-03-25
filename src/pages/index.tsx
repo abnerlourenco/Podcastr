@@ -4,11 +4,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import ptBR from 'date-fns/locale/pt-BR';
 import { GetStaticProps } from 'next';
-import { useContext } from 'react';
 
 import { api } from '../services/api';
 import { convertDurationToTimeString } from '../utils/convertDurationToTimeString';
-import { PlayerContext } from '../contexts/playerContext';
+import { usePlayer } from '../contexts/playerContext';
 
 import styles from './home.module.scss';
 
@@ -31,7 +30,7 @@ type HomeProps = {
 //para atribuir uma tipagem, basta ir na variável.
 
 export default function Home({latestEpisodes,allEpisodes}: HomeProps) {
-  const { playList } = useContext(PlayerContext)
+  const { playList } = usePlayer()
 
   const episodeList = [...latestEpisodes, ...allEpisodes];
 
