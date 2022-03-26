@@ -32,37 +32,40 @@ export default function Episode({ episode }: EpisodeProps) {
     const { play } = usePlayer()
 
     return (
-        <div className={styles.episode}>
+        <div className={styles.container}>
             
-            <div className={styles.thumbnailContainer}>
-                <Link href='/'>
-                    <button type="button">
-                        <img src="/arrow-left.svg" alt="Voltar"/>
-                    </button>
-                </Link>
-
-                <Image
-                    width={700} 
-                    height={160}
-                    src={episode.thumbnail}
-                    objectFit="cover"
-                />
+            <div className={styles.episode}>
                 
-                <button type="button" onClick={() => play(episode)}>
-                    <img src="/play.svg" alt="Tocar episódio"/>
-                </button>
-            </div>
+                <div className={styles.thumbnailContainer}>
+                    <Link href='/'>
+                        <button type="button">
+                            <img src="/arrow-left.svg" alt="Voltar"/>
+                        </button>
+                    </Link>
 
-            <header>
-                <h1>{episode.title}</h1>
-                <span>{episode.members}</span>
-                <span>{episode.publishedAt}</span>
-                <span>{episode.durationAsString}</span>
-            </header>
-            
-            <div className={styles.description} 
-                dangerouslySetInnerHTML={{ __html: episode.description}}
-            />
+                    <Image
+                        width={800} 
+                        height={400}
+                        src={episode.thumbnail}
+                        objectFit="cover"
+                    />
+                    
+                    <button type="button" onClick={() => play(episode)}>
+                        <img src="/play.svg" alt="Tocar episódio"/>
+                    </button>
+                </div>
+
+                <header>
+                    <h1>{episode.title}</h1>
+                    <span>{episode.members}</span>
+                    <span>{episode.publishedAt}</span>
+                    <span>{episode.durationAsString}</span>
+                </header>
+                
+                <div className={styles.description} 
+                    dangerouslySetInnerHTML={{ __html: episode.description}}
+                />
+            </div>
         </div>
     )
 }

@@ -13,7 +13,7 @@
     ul {
         list-style: none; //remover as bolinhas que vem com o html
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 2fr);
         gap: 1.5rem;
 
         li{
@@ -141,7 +141,7 @@
             img {
                 width: 8rem;
                 height: 5rem;
-                border-radius: 0.5rem;
+                border-radius: 1rem;
             }
 
             a {
