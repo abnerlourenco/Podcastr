@@ -25,7 +25,8 @@ type PlayerContextData = {
     togglePlay: () => void;
     toggleLoop: () => void;
     toggleShuffle: () => void;
-    // stopPlay: () => void;
+    clearPlayerState: () => void;
+    stopPlay: () => void;
     hasNext: boolean;
     hasPrevious: boolean;
 };
@@ -56,7 +57,7 @@ export function PlayerContextProvider ({ children }: PlayerContextProviderProps)
     }
     
     function togglePlay() {
-    setIsPlaying(!isPlaying);
+        setIsPlaying(!isPlaying);
     }
 
     function toggleLoop() {
@@ -67,15 +68,15 @@ export function PlayerContextProvider ({ children }: PlayerContextProviderProps)
         setisShuffling(!isShuffling);
     }
 
-    // function stopPlay() {
-    //     setIsPlaying(false);
-    // }
+    function stopPlay() {
+        setIsPlaying(false);
+    }
 
     function setPlayingState(state: boolean) {
         setIsPlaying(state);
     }
 
-    const hasNext = (currentEpisodeIndex + 1) < episodeList.length;
+    const hasNext = isShuffling || (currentEpisodeIndex + 1) < episodeList.length;
 
     const hasPrevious = currentEpisodeIndex > 0;
 
@@ -88,6 +89,11 @@ export function PlayerContextProvider ({ children }: PlayerContextProviderProps)
         } else if (hasNext){ 
             setCurrentEpisodeIndex(currentEpisodeIndex + 1);
         }
+    }
+
+    function clearPlayerState() {
+        setEpisodeList([]);
+        setCurrentEpisodeIndex(0);
     }
     
     function playPrevious() {
@@ -106,7 +112,7 @@ export function PlayerContextProvider ({ children }: PlayerContextProviderProps)
                 isPlaying, 
                 togglePlay, 
                 toggleShuffle,
-                // stopPlay,
+                stopPlay,
                 setPlayingState,
                 playNext,
                 playPrevious,
@@ -114,7 +120,8 @@ export function PlayerContextProvider ({ children }: PlayerContextProviderProps)
                 hasPrevious,
                 toggleLoop,
                 isLooping,
-                isShuffling
+                isShuffling,
+                clearPlayerState
             }}
         >
             {children}
