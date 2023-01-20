@@ -1,42 +1,27 @@
 # Podcast
 
-An online platform to listen to and follow podcasts.
+Uma plataforma para ouvir e seguir podcasts
 
-It was developed and through Next Level Week 5.
+## O que precisa para executar o projeto:
 
-## Requirements to run this project:
+- [Node.js](https://nodejs.org/en/)
+- [Yarn](https://classic.yarnpkg.com/en/docs/getting-started)
 
-=> [Node.js](https://nodejs.org/en/)
+## Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-## Available Scripts
+- [React](https://reactjs.org)
+- [Next.js](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
 
-You clone this repository from GitHub.com to your local computer 
-When you clone a repository, you copy the repository from GitHub.com to your local machine.
+Abra seu Prompt de comando dentro do diretório do projeto,
 
-For more information, see "[Using Git](https://docs.github.com/en/get-started/using-git)".
+## Passos para executar o projeto
 
-Open your Comand Prompt into project diretory,
+- Primeiramente `clone` o repositório. Para mais informação, veja "[Using Git](https://docs.github.com/en/get-started/using-git)".
 
-### `yarn install`
+- Instale as dependências com `yarn`
+- Inicie a fake api com `yarn server`
+- Inicie o servidor com `yarn dev`
 
-Run the comand to install the project dependences
-
-### `yarn server` 
-
-Run the command to list the episodes on the server.
-The server will be hosted at [http://localhost:3333](http://localhost:3333).
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Execute a aplicação no modo de desenvolvimento.\
+Abra [localhost:3000](http://localhost:3000) Para visualizar no navegador.
