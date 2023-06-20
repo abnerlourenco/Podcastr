@@ -10,7 +10,7 @@
   },
   "engines": {
     "node": "14"
-  }
+  },
   "dependencies": {
     "@types/date-fns": "^2.6.0",
     "axios": "^0.21.1",
