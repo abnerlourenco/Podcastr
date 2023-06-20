@@ -8,6 +8,9 @@
     "start": "next start",
     "server": "json-server server.json -W -d 750 -p 3333"
   },
+  "engines": {
+    "node": "14"
+  }
   "dependencies": {
     "@types/date-fns": "^2.6.0",
     "axios": "^0.21.1",
