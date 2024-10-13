@@ -49,11 +49,10 @@ export default function Episode({ episode }: EpisodeProps) {
                     </Link>
 
                     <Image
-                        width={800} 
+                        width={800}
                         height={400}
                         src={episode.thumbnail}
-                        objectFit="cover"
-                    />
+                        objectFit="cover" alt={''}                    />
                     
                     <button type="button" onClick={() => play(episode)}>
                         <img src="/play.svg" alt="Tocar episódio"/>
@@ -87,7 +86,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     const paths = data.map(episode => {
         return {
             params: {
-                qualquerCoisaMesmo: episode.id
+                qualquercoisamesmo: episode.id
             }
         }
     })
