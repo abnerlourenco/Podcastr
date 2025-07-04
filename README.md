@@ -1,6 +1,6 @@
 # [Podcast](https://myapppodcast.netlify.app/)
 
-Uma plataforma para ouvir e seguir podcasts
+Uma plataforma para ouvir e seguir podcasts. Publicado em myapppodcast.netlify.app
 
 ## O que precisa para executar o projeto:
 
